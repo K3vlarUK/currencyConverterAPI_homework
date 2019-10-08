@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Curreny Calculator</title>
+    <script src="./js/bundle.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Currency Calculator</h1>
+      <div class="eur-to">
+        <input type="text" id="amount" v-model.number="euroAmount" placeholder="Enter Amount of Euros" required>
+        <span> Euros converted to </span>
+        <select v-model="endCurrency">
+          <option v-for="(value, name) in allRates" :value="value">{{ name }}</option>
+        </select>
+        <span> Is - </span>
+        <span v-if="endCurrency">{{ convertFromEuros }}</span>
+      </div>
+      <hr>
+      <div class="to-eur">
+        <input type="text" id="amount" v-model.number="foreignAmount" placeholder="Enter Amount of Foregin Currency" required>
+        <select v-model="startCurrency" id="startCurrency">
+          <option v-for="(value,name) in allRates" :value="value">{{ name }}</option>
+        </select>
+        <span>Converted to Euros is -</span>
+          <span v-if="startCurrency">{{ convertToEuros }}</span>
+      </div>
+    </div>
+  </body>
+</html>
