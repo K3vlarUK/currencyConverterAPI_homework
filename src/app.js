@@ -23,16 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const foreignConversion = this.foreignAmount / this.startCurrency
         return foreignConversion.toFixed(2)
       }
+    },
+    methods: {
+      getRates: function() {
+        const request = fetch("https://api.exchangeratesapi.io/latest")
+        .then(response => response.json())
+        .then(data => {
+          this.allRates = data.rates
+        })
+      }
     }
-  },
-  methods: {
-    getRates: function() {
-      const request = fetch("https://api.exchangeratesapi.io/latest")
-      .then(response => response.json())
-      .then(data => {
-        this.allRates = data.rates
-      })
-    }
-  }
-})
+  })
 })
